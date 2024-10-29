@@ -1,64 +1,13 @@
+<!-- public/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot</title>
-    <style>
-        body { font-family: Arial, sans-serif; background-color: #f4f4f4; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        #chat-container { width: 70%; background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); }
-        #chat-box { height: 300px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 5px; }
-        #chat-box p { margin: 5px 0; }
-        #user-input { width: calc(100% - 60px); padding: 10px; margin-right: 10px; border-radius: 5px; border: 1px solid #ccc; }
-        #send-button { padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
-    </style>
+    <title>Hello World App</title>
 </head>
 <body>
-    <div id="chat-container">
-        <div id="chat-box"></div>
-        <input type="text" id="user-input" placeholder="Skriv en besked...">
-        <button id="send-button">Send</button>
-    </div>
-
-    <script>
-        const sendButton = document.getElementById('send-button');
-        const userInput = document.getElementById('user-input');
-        const chatBox = document.getElementById('chat-box');
-
-        // Funktion til at vise beskeder
-        function displayMessage(message) {
-            const messageElement = document.createElement('p');
-            messageElement.textContent = message;
-            chatBox.appendChild(messageElement);
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }
-
-        // Funktion til at sende brugerens besked og hente botens svar
-        async function sendMessage() {
-            const userMessage = userInput.value.trim();
-            if (!userMessage) return;
-
-            displayMessage('Dig: ' + userMessage);
-            userInput.value = '';
-
-            try {
-                const response = await fetch('/api/chat', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ userMessage: userMessage })
-                });
-
-                const data = await response.json();
-                displayMessage('Bot: ' + data.botMessage);
-            } catch (error) {
-                displayMessage("Bot: Der opstod en fejl. Prøv venligst igen.");
-            }
-        }
-
-        sendButton.addEventListener('click', sendMessage);
-        userInput.addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') sendMessage();
-        });
-    </script>
+    <h1>Hello World!</h1>
+    <p>Welcome to my simple Heroku-deployed app!</p>
 </body>
 </html>
